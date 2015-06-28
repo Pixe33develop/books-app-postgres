@@ -66,9 +66,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sitebooks.wsgi.application'
 
-DATABASES = {
-    'default': dj_database_url.config()
-}
+DATABASES = { 'default': dj_database_url.parse('postgres://fhnklzgsqvueye:h21wCnUYWExmuLdRzMcvli-zDT@ec2-54-227-249-165.compute-1.amazonaws.com:5432/d4i6udgs8bvp3h') }
 
 LANGUAGE_CODE = 'en-us'
 
