@@ -1,0 +1,1 @@
+web: gunicorn sitebooks.wsgi --log-file -
