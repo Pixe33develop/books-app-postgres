@@ -13,7 +13,7 @@ class Book(models.Model):
 
 
 class Profile(models.Model):
-    column_name = models.CharField(max_length=20)
+    column_name = models.CharField(editable=False, max_length=20)
     is_visible = models.BooleanField()
 
     def __str__(self):

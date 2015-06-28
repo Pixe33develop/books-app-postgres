@@ -3,6 +3,7 @@
   define(function() {
     'use strict';
     return function(match) {
+      match('', 'library#home');
       match('library', 'library#books');
       return match('profile', 'library#profile');
     };

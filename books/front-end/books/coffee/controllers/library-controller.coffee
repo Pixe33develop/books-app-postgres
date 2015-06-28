@@ -1,4 +1,5 @@
 define [
+  'chaplin'
   'controllers/base/controller'
   'views/library-view'
   'views/books-view'
@@ -6,7 +7,7 @@ define [
   'views/options-view'
   'models/books'
   'models/profiles'
-], (Controller, LibraryView, BooksView, ProfilesView, OptionsView, Books, Profiles) ->
+], (Chaplin, Controller, LibraryView, BooksView, ProfilesView, OptionsView, Books, Profiles) ->
   'use strict'
 
   class LibraryController extends Controller
@@ -26,3 +27,6 @@ define [
       @view.subview 'profiles', new ProfilesView collection: @profiles, region: 'profiles'
 
       @profiles.fetch()
+
+    home: ->
+      Chaplin.utils.redirectTo 'library#books'

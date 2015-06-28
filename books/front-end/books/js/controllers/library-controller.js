@@ -3,7 +3,7 @@
   var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
     hasProp = {}.hasOwnProperty;
 
-  define(['controllers/base/controller', 'views/library-view', 'views/books-view', 'views/profiles-view', 'views/options-view', 'models/books', 'models/profiles'], function(Controller, LibraryView, BooksView, ProfilesView, OptionsView, Books, Profiles) {
+  define(['chaplin', 'controllers/base/controller', 'views/library-view', 'views/books-view', 'views/profiles-view', 'views/options-view', 'models/books', 'models/profiles'], function(Chaplin, Controller, LibraryView, BooksView, ProfilesView, OptionsView, Books, Profiles) {
     'use strict';
     var LibraryController;
     return LibraryController = (function(superClass) {
@@ -42,6 +42,10 @@
           region: 'profiles'
         }));
         return this.profiles.fetch();
+      };
+
+      LibraryController.prototype.home = function() {
+        return Chaplin.utils.redirectTo('library#books');
       };
 
       return LibraryController;
