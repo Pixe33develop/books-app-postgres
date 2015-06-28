@@ -1,0 +1,110 @@
+.logo {
+    width: 180px;
+    height: 100%;
+    font-size: 36pt;
+    color: #268e92;
+    display: inline-block;
+    cursor: default;
+}
+
+.header-btn {
+    width: 160px;
+    height: 100%;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 36pt;
+    color: #117c57;
+    text-align: center;
+}
+
+.header-btn:hover {
+    background: #549a86;
+    color: white;
+}
+
+.content {
+    width: 700px;
+    height: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.book {
+    cursor: pointer;
+    color: #3f7c69;
+}
+
+.book:hover {
+    background: #c5ffec;
+}
+
+.add-book {
+    width: 50px;
+    background: url('/front-end/books/static/image/add.png') no-repeat center;
+    background-size: 15px;
+    cursor: pointer;
+}
+
+.add-book:hover {
+    opacity: 0.5;
+}
+
+.remove-book {
+    width: 50px;
+    background: url('/front-end/books/static/image/close.png') no-repeat 7px 50%;
+    background-size: 14px;
+}
+
+.remove-book:hover {
+    opacity: 0.5;
+}
+
+.head {
+    font-weight: bold;
+    color: #1f4637;
+}
+
+.book-modal {
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: white;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    background: rgb(185, 255, 235);
+    height: 60px;
+    padding: 0;
+}
+
+footer {
+    background: rgb(185, 255, 235);
+    height: 300px;
+    padding: 0;
+}
+
+table {
+    cursor: default;
+}
+
+tr {
+}
+
+td {
+    width: 100px;
+    text-align: center;
+    height: 100%;
+}
+
+td:last-child {
+    width: 30px;
+}
