@@ -7,7 +7,7 @@ define [
   class ModalViewFactory
 
     @createBook: (callback) ->
-      new BookModalView region: 'books', title: 'create', callback: callback
+      new BookModalView region: 'books', title: 'Create', callback: callback
 
     @editBook: (callback, bookAttributes) ->
-      new BookModalView region: 'books', title: 'edit', callback: callback, bookAttributes: bookAttributes
+      new BookModalView region: 'books', title: 'Edit', callback: callback, bookAttributes: bookAttributes

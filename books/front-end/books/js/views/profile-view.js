@@ -22,11 +22,12 @@
       ProfileView.prototype.className = 'profile';
 
       ProfileView.prototype.events = {
-        'click input#is_visible': 'save'
+        'click': 'save'
       };
 
       ProfileView.prototype.save = function() {
-        this.model.attributes.is_visible = $(this.el).find('input#is_visible').is(':checked');
+        this.model.attributes.is_visible = !this.model.attributes.is_visible;
+        this.render();
         return this.model.save();
       };
 

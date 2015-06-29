@@ -1,8 +1,11 @@
 <div class='book-modal'>
-  <div>{{title}} book</div>
-  <button type="button" class="close">close</button>
-  <button type="button" class="accept">accept</button>
-  <br>
+  <div class="modal-title">
+    {{title}} book
+    <div class="close"></div>
+  </div>
+  <!--<button type="button" class="close">close</button>-->
+  <!--<button type="button" class="accept">accept</button>-->
+  <!--<br>-->
   <input id="name" type="text" placeholder="name" maxlength="20" autocomplete="off" value="{{book/name}}">
   <input id="title" type="text" placeholder="title" maxlength="30" autocomplete="off" value="{{book/title}}">
   <input id="author" type="text" placeholder="author" maxlength="30" autocomplete="off" value="{{book/author}}">

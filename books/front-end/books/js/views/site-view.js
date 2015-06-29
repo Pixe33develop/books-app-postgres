@@ -29,14 +29,14 @@
 
       SiteView.prototype.events = {
         'click .library': 'goLibrary',
-        'click .profile': 'goProfile'
+        'click .options': 'goOptions'
       };
 
       SiteView.prototype.goLibrary = function() {
         return Chaplin.utils.redirectTo('library#books');
       };
 
-      SiteView.prototype.goProfile = function() {
+      SiteView.prototype.goOptions = function() {
         return Chaplin.utils.redirectTo('library#profile');
       };
 

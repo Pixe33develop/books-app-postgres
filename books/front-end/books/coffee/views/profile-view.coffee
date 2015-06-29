@@ -12,8 +12,9 @@ define [
     className: 'profile'
 
     events:
-      'click input#is_visible' : 'save'
+      'click' : 'save'
 
     save: ->
-      @model.attributes.is_visible = $(@el).find('input#is_visible').is(':checked')
+      @model.attributes.is_visible = !@model.attributes.is_visible
+      @render();
       @model.save()

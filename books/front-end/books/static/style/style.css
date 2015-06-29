@@ -1,14 +1,15 @@
 .logo {
-    width: 180px;
+    width: 220px;
     height: 100%;
     font-size: 36pt;
+    font-weight: bold;
     color: #268e92;
     display: inline-block;
-    cursor: default;
+    margin-left: 60px;
 }
 
 .header-btn {
-    width: 160px;
+    width: 200px;
     height: 100%;
     display: inline-block;
     cursor: pointer;
@@ -22,26 +23,35 @@
     color: white;
 }
 
+.head {
+    height: 100%;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .content {
     width: 700px;
     height: 700px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
 }
 
-.book {
+.book,
+.profile {
     cursor: pointer;
     color: #3f7c69;
 }
 
-.book:hover {
+.book:hover,
+.profile:hover {
     background: #c5ffec;
 }
 
 .add-book {
-    width: 50px;
     background: url('/front-end/books/static/image/add.png') no-repeat center;
-    background-size: 15px;
+    background-size: 20px;
     cursor: pointer;
 }
 
@@ -50,23 +60,22 @@
 }
 
 .remove-book {
-    width: 50px;
-    background: url('/front-end/books/static/image/close.png') no-repeat 7px 50%;
-    background-size: 14px;
+    background: url('/front-end/books/static/image/close.png') no-repeat center;
+    background-size: 20px;
 }
 
 .remove-book:hover {
     opacity: 0.5;
 }
 
-.head {
+.table-head {
     font-weight: bold;
     color: #1f4637;
 }
 
 .book-modal {
-    width: 300px;
-    height: 200px;
+    width: 400px;
+    height: 300px;
     position: absolute;
     top: 0;
     left: 0;
@@ -74,6 +83,33 @@
     bottom: 0;
     margin: auto;
     background: white;
+}
+
+.modal-title {
+    width: 100%;
+    height: 50px;
+    font-size: 25pt;
+    font-weight: bold;
+    color: #1f4637;
+    text-align: center;
+}
+
+.checked {
+    background: url('/front-end/books/static/image/check.png') no-repeat center;
+    background-size: 20px;
+}
+
+.close {
+    height: 37px;
+    width: 37px;
+    float: right;
+    background: url('/front-end/books/static/image/close.png') no-repeat center;
+    background-size: 25px;
+}
+
+.close:hover {
+    opacity: 0.5;
+    cursor: pointer;
 }
 
 body {
@@ -84,6 +120,7 @@ header {
     background: rgb(185, 255, 235);
     height: 60px;
     padding: 0;
+    cursor: default;
 }
 
 footer {
@@ -94,6 +131,8 @@ footer {
 
 table {
     cursor: default;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 tr {

@@ -9,7 +9,7 @@
       ModalViewFactory.createBook = function(callback) {
         return new BookModalView({
           region: 'books',
-          title: 'create',
+          title: 'Create',
           callback: callback
         });
       };
@@ -17,7 +17,7 @@
       ModalViewFactory.editBook = function(callback, bookAttributes) {
         return new BookModalView({
           region: 'books',
-          title: 'edit',
+          title: 'Edit',
           callback: callback,
           bookAttributes: bookAttributes
         });

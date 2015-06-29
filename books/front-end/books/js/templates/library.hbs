@@ -1,11 +1,13 @@
 <!--<button type="button" class="add-book">Add Book</button>-->
-<table class="head">
+<table class="table-head">
   <tr>
-    <td>Name</td>
-    <td>Title</td>
-    <td>Author</td>
-    <td>Description</td>
-    <td>Price</td>
+    {{#attr-show}}
+      {{#if name}}<td>Name</td>{{/if}}
+      {{#if title}}<td>Title</td>{{/if}}
+      {{#if author}}<td>Author</td>{{/if}}
+      {{#if description}}<td>Description</td>{{/if}}
+      {{#if price}}<td>Price</td>{{/if}}
+    {{/attr-show}}
     <td class="add-book"></td>
   </tr>
 </table>

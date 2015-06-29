@@ -18,10 +18,10 @@ define [
 
     events:
       'click .library' : 'goLibrary'
-      'click .profile' : 'goProfile'
+      'click .options' : 'goOptions'
 
     goLibrary: ->
       Chaplin.utils.redirectTo 'library#books'
 
-    goProfile: ->
+    goOptions: ->
       Chaplin.utils.redirectTo 'library#profile'

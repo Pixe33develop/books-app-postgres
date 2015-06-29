@@ -1,2 +1,6 @@
-<input id="is_visible" type="checkbox" {{#if is_visible}}checked{{/if}}/>
-{{column_name}}
+<tr>
+  <td>
+    {{column_name}}
+  </td>
+  <td {{#if is_visible}}class="checked"{{/if}} ></td>
+</tr>
