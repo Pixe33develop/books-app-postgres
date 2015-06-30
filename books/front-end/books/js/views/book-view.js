@@ -25,7 +25,7 @@
 
       BookView.prototype.events = {
         'click .remove-book': 'removeBook',
-        'click .edit-book': 'showModalBook'
+        'click': 'showModalBook'
       };
 
       BookView.prototype.removeBook = function() {

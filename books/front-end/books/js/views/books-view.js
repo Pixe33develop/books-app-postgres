@@ -3,17 +3,17 @@
   var extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
     hasProp = {}.hasOwnProperty;
 
-  define(['views/base/collection-view', 'text!templates/books.hbs', 'views/book-view'], function(CollectionView, template, BookView) {
+  define(['views/base/collection-view', 'views/book-view'], function(CollectionView, BookView) {
     'use strict';
     var BooksView;
     return BooksView = (function(superClass) {
+      var template;
+
       extend(BooksView, superClass);
 
       function BooksView() {
         return BooksView.__super__.constructor.apply(this, arguments);
       }
-
-      BooksView.prototype.template = template;
 
       template = null;
 
@@ -22,6 +22,17 @@
       BooksView.prototype.className = 'books';
 
       BooksView.prototype.itemView = BookView;
+
+      BooksView.prototype.renderAll = function() {
+        var book, i, len, ref, results;
+        ref = this.subviews;
+        results = [];
+        for (i = 0, len = ref.length; i < len; i++) {
+          book = ref[i];
+          results.push(book.render());
+        }
+        return results;
+      };
 
       return BooksView;
 

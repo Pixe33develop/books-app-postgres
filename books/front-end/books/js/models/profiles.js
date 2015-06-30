@@ -22,7 +22,12 @@
       };
 
       Profiles.prototype.initialize = function() {
-        return Profiles.__super__.initialize.apply(this, arguments);
+        Profiles.__super__.initialize.apply(this, arguments);
+        return this.sort();
+      };
+
+      Profiles.prototype.comparator = function(model) {
+        return model.get('column_name');
       };
 
       return Profiles;

@@ -11,22 +11,30 @@ define [
   'use strict'
 
   class LibraryController extends Controller
-    books: ->
-      @profiles = new Profiles
-      @profiles.fetch().done =>
-        @view = new LibraryView region: 'content', profiles: @profiles
-        @books = new Books
-        @view.subview 'books', new BooksView collection: @books, region: 'books'
-        @books.fetch()
+    beforeAction: ->
+      super
+      @reuse 'data',
+        compose: ->
+          @profiles = new Profiles
+          @profiles.fetch()
+          @books = new Books
+          @books.fetch()
 
-      @profiles.fetch()
+    books: ->
+      @view = new LibraryView region: 'content'
+      @view.subview 'books', new BooksView collection: @reuse('data').books, region: 'books'
+
+      profiles = @reuse('data').profiles
+      if profiles.models.length > 0
+        @view.applyFilter profiles.models
+      else
+        profiles.fetch().done => @view.applyFilter profiles.models
+
 
     profile: ->
       @view = new OptionsView region: 'content'
-      @profiles = new Profiles
-      @view.subview 'profiles', new ProfilesView collection: @profiles, region: 'profiles'
+      @view.subview 'profiles', new ProfilesView collection: @reuse('data').profiles, region: 'profiles'
 
-      @profiles.fetch()
 
     home: ->
       Chaplin.utils.redirectTo 'library#books'

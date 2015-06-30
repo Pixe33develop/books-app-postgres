@@ -23,7 +23,12 @@
 
       BookModalView.prototype.events = {
         'click .close': 'remove',
-        'click .accept': 'accept'
+        'click .accept': 'accept',
+        'keydown input#price': 'checkPrice',
+        'paste input#price': function() {
+          return false;
+        },
+        'keydown': 'inputs'
       };
 
       BookModalView.prototype.initialize = function(options) {
@@ -41,11 +46,38 @@
           name: $(this.el).find('input#name').val(),
           title: $(this.el).find('input#title').val(),
           author: $(this.el).find('input#author').val(),
-          description: $(this.el).find('input#description').val(),
+          description: $(this.el).find('textarea#description').val(),
           price: $(this.el).find('input#price').val()
         };
+        if (!(book.name.length > 0 && book.author.length > 0 && book.price.length > 0)) {
+          return;
+        }
         this.callback(book);
         return this.remove();
+      };
+
+      BookModalView.prototype.inputs = function(event) {
+        if (event.keyCode === 13) {
+          this.accept();
+          return;
+        }
+        if (event.keyCode === 27) {
+          this.remove();
+        }
+      };
+
+      BookModalView.prototype.checkPrice = function(event) {
+        var c;
+        c = event.keyCode;
+        if (c === 46 || c === 8 || c === 9 || c === 27 || c === 110) {
+          return true;
+        }
+        if (!((c >= 48 && c <= 57) || (c >= 96 && c <= 105))) {
+          return false;
+        }
+        if (!($(this.el).find('input#price').val().length <= 5)) {
+          return false;
+        }
       };
 
       BookModalView.prototype.getTemplateData = function() {

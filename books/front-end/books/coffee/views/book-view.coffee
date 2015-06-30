@@ -14,7 +14,7 @@ define [
 
     events: {
       'click .remove-book' : 'removeBook'
-      'click .edit-book' : 'showModalBook'
+      'click' : 'showModalBook'
     }
 
     removeBook: ->

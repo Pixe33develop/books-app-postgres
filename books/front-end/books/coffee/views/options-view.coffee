@@ -10,3 +10,4 @@ define [
 
     autoRender: true
     className: 'options'
+

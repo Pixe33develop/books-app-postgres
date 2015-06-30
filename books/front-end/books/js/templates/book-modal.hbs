@@ -1,14 +1,16 @@
-<div class='book-modal'>
+<div class='book-modal-window'>
   <div class="modal-title">
     {{title}} book
     <div class="close"></div>
   </div>
-  <!--<button type="button" class="close">close</button>-->
-  <!--<button type="button" class="accept">accept</button>-->
-  <!--<br>-->
-  <input id="name" type="text" placeholder="name" maxlength="20" autocomplete="off" value="{{book/name}}">
-  <input id="title" type="text" placeholder="title" maxlength="30" autocomplete="off" value="{{book/title}}">
-  <input id="author" type="text" placeholder="author" maxlength="30" autocomplete="off" value="{{book/author}}">
-  <input id="description" type="text" placeholder="description" maxlength="512" autocomplete="off" value="{{book/description}}">
-  <input id="price" type="number" placeholder="price" autocomplete="off" value="{{book/price}}">
+  <div class="modal-inputs">
+    <input class="required" id="name" type="text" placeholder="name" maxlength="20" autocomplete="off" value="{{book/name}}">
+    <input id="title" type="text" placeholder="title" maxlength="30" autocomplete="off" value="{{book/title}}">
+    <input class="required" id="author" type="text" placeholder="author" maxlength="30" autocomplete="off" value="{{book/author}}">
+    <textarea id="description" placeholder="description" maxlength="512">{{book/description}}</textarea>
+    <input class="required" id="price" type="number" placeholder="price" autocomplete="off" value="{{book/price}}">
+  </div>
+  <div class="modal-tooltip">*Marked fields should not be empty</div>
+  <div class="modal-accept accept">Accept</div>
+
 </div>

@@ -17,12 +17,28 @@ define [
       'click .add-book' : 'showModalBook'
     }
 
-    initialize: (options) ->
+    initialize: ->
       super
-      @showAttributes = @profilesHash(options.profiles.models)
+      @showAttributes = {
+        name: true
+        title: true
+        author: true
+        description: true
+        price: true
+      }
+      @visible = 5
 
       Handlebars.registerHelper 'attr-show', (cond) =>
         return cond.fn(@showAttributes)
+
+      Handlebars.registerHelper 'short', (value) =>
+        result = value.substring(0, 50 / @visible)
+        if result.length < value.length
+          result += '...'
+        return result
+
+      Handlebars.registerHelper 'width', () =>
+        return 670 / @visible + 'px'
 
     addBook: (book) =>
       @subviewsByName['books'].collection.addBook(book)
@@ -30,9 +46,15 @@ define [
     showModalBook: ->
       BookViewFactory.createBook(@addBook)
 
-    profilesHash: (profiles) ->
-      result = {}
-      for profile in profiles
-        result[profile.attributes.column_name.toLowerCase()] = profile.attributes.is_visible
+    applyFilter: (profiles) ->
+      if profiles.length > 0
+        delete @showAttributes
+        @showAttributes = {}
+        @visible = 0
+        for profile in profiles
+          @visible++ unless !profile.attributes.is_visible
+          @showAttributes[profile.attributes.column_name.toLowerCase()] = profile.attributes.is_visible
 
-      result
+      @render()
+      @subviewsByName['books'].render()
+      @subviewsByName['books'].collection.reset(@subviewsByName['books'].collection.toJSON())

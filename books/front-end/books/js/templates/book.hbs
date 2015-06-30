@@ -1,10 +1,9 @@
-<tr class="edit-book">>
-    {{#attr-show}}
-        {{#if name}}<td>{{../../name}}</td>{{/if}}
-        {{#if title}}<td>{{../../title}}</td>{{/if}}
-        {{#if author}}<td>{{../../author}}</td>{{/if}}
-        {{#if description}}<td>{{../../description}}</td>{{/if}}
-        {{#if price}}<td>{{../../price}}</td>{{/if}}
-    {{/attr-show}}
-    <td class="remove-book"></td>
-</tr>
+{{#attr-show}}
+  {{#if name}}<td style="width: {{width}};">{{short ../../name}}</td>{{/if}}
+  {{#if title}}<td style="width: {{width}};">{{short ../../title}}</td>{{/if}}
+  {{#if author}}<td style="width: {{width}};">{{short ../../author}}</td>{{/if}}
+  {{#if description}}<td style="width: {{width}};">{{short ../../description}}</td>{{/if}}
+  {{#if price}}<td style="width: {{width}};">{{../../price}}</td>{{/if}}
+{{/attr-show}}
+<td class="remove-book"></td>
+

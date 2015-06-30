@@ -14,3 +14,7 @@ define [
 
     initialize: ->
       super
+      @sort()
+
+    comparator: (model) ->
+      model.get('column_name')

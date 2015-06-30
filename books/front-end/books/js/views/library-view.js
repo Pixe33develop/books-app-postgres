@@ -27,12 +27,34 @@
         'click .add-book': 'showModalBook'
       };
 
-      LibraryView.prototype.initialize = function(options) {
+      LibraryView.prototype.initialize = function() {
         LibraryView.__super__.initialize.apply(this, arguments);
-        this.showAttributes = this.profilesHash(options.profiles.models);
-        return Handlebars.registerHelper('attr-show', (function(_this) {
+        this.showAttributes = {
+          name: true,
+          title: true,
+          author: true,
+          description: true,
+          price: true
+        };
+        this.visible = 5;
+        Handlebars.registerHelper('attr-show', (function(_this) {
           return function(cond) {
             return cond.fn(_this.showAttributes);
+          };
+        })(this));
+        Handlebars.registerHelper('short', (function(_this) {
+          return function(value) {
+            var result;
+            result = value.substring(0, 50 / _this.visible);
+            if (result.length < value.length) {
+              result += '...';
+            }
+            return result;
+          };
+        })(this));
+        return Handlebars.registerHelper('width', (function(_this) {
+          return function() {
+            return 670 / _this.visible + 'px';
           };
         })(this));
       };
@@ -45,14 +67,23 @@
         return BookViewFactory.createBook(this.addBook);
       };
 
-      LibraryView.prototype.profilesHash = function(profiles) {
-        var i, len, profile, result;
-        result = {};
-        for (i = 0, len = profiles.length; i < len; i++) {
-          profile = profiles[i];
-          result[profile.attributes.column_name.toLowerCase()] = profile.attributes.is_visible;
+      LibraryView.prototype.applyFilter = function(profiles) {
+        var i, len, profile;
+        if (profiles.length > 0) {
+          delete this.showAttributes;
+          this.showAttributes = {};
+          this.visible = 0;
+          for (i = 0, len = profiles.length; i < len; i++) {
+            profile = profiles[i];
+            if (!!profile.attributes.is_visible) {
+              this.visible++;
+            }
+            this.showAttributes[profile.attributes.column_name.toLowerCase()] = profile.attributes.is_visible;
+          }
         }
-        return result;
+        this.render();
+        this.subviewsByName['books'].render();
+        return this.subviewsByName['books'].collection.reset(this.subviewsByName['books'].collection.toJSON());
       };
 
       return LibraryView;
