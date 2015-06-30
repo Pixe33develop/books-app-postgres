@@ -8,7 +8,7 @@
     <input id="title" type="text" placeholder="title" maxlength="30" autocomplete="off" value="{{book/title}}">
     <input class="required" id="author" type="text" placeholder="author" maxlength="30" autocomplete="off" value="{{book/author}}">
     <textarea id="description" placeholder="description" maxlength="512">{{book/description}}</textarea>
-    <input class="required" id="price" type="number" placeholder="price" autocomplete="off" value="{{book/price}}">
+    <input class="required" id="price" type="number" placeholder="price" autocomplete="off" min="0" max="99999" value="{{book/price}}">
   </div>
   <div class="modal-tooltip">*Marked fields should not be empty</div>
   <div class="modal-accept accept">Accept</div>
